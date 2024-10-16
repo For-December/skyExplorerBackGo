@@ -7,6 +7,7 @@ import (
 	"github.com/sirupsen/logrus"
 	"net/http"
 	"os"
+	"skyExplorerBack/src/controller"
 	"strings"
 	"time"
 )
@@ -15,6 +16,10 @@ var app *gin.Engine
 
 func Routers() *gin.Engine {
 
+	v1 := app.Group("/api/v1")
+	{
+		v1.GET("ping", controller.TestHandler)
+	}
 	return app
 }
 
