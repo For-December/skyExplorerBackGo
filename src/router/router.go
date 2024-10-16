@@ -19,6 +19,16 @@ func Routers() *gin.Engine {
 	v1 := app.Group("/api/v1")
 	{
 		v1.GET("ping", controller.TestHandler)
+
+		v1.GET("processes", controller.ProcessesGetAllHandler)
+		v1.GET("processes/:id", controller.ProcessesGetByIdHandler)
+		v1.POST("processes/:id/execution", controller.ProcessesExecutionHandler)
+
+		v1.GET("jobs", controller.JobsGetAllHandler)
+		v1.GET("jobs/:id", controller.JobsGetByIdHandler)
+		v1.DELETE("jobs/:id", controller.JobsCancelHandler)
+		v1.GET("jobs/:id/results", controller.JobsCancelHandler)
+
 	}
 	return app
 }
